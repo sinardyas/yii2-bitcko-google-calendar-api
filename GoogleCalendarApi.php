@@ -113,7 +113,8 @@ class GoogleCalendarApi
                         'attendees' => $event['attendees'],
                         'reminders' => $event['reminders']
                     ));
-                    return  $service->events->insert($calendarId, $event);
+                    $optionalArguments = ['sendUpdates' => 'all'];
+                    return  $service->events->insert($calendarId, $event, $optionalArguments);
                 }catch (Google_Service_Exception $e){
                     echo $e->getMessage();
                 }
